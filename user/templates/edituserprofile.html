@@ -1,0 +1,92 @@
+{% extends 'userhome.html' %}
+
+
+{% block admin %}
+            <h1>Update your details<br> <strong>e-mail</strong><br>won't be edited</h1>
+                        <a href="#features" class="main-button-slider">Buy Something</a>
+                            <p>User : {{User_track}}</p>
+{% endblock admin %}
+
+{% block content %}
+    <style>
+#update{
+    background-color: rgb(73, 95, 89);
+    width: 500px;
+    height: 450px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 30px;
+}
+td{
+    margin:10px;
+    padding: 5px;
+}
+    </style>
+
+
+<center>
+    <div id="update">
+        <h2>Update Details</h2>
+    {{ msg }}
+<form method="POST" action="/user/updateuserprofile/" >
+    {% csrf_token %}
+    <table>
+        <div id="form" class="mb-3">
+            <tr>
+                <td> <label> Name </label></td>
+                <td> <input type="text" name="name" value="{{userdetails.name}}"> </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="name" name="email" value="{{userdetails.username}}" readonly> </td>
+            </tr>
+          
+            <tr>
+                <td> <label>Enter Phone No </label> </td>
+                <td> <input type="tel"  name="mobile" value="{{userdetails.mobile}}"> </td>
+            </tr>
+            <div id="male_female">
+                <tr>
+                    <td>
+                        <input type="radio" id="male" name="gender" value="male" {{m}}>
+                        <label for="male">Male</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" id="female" name="gender" value="female" {{f}}>
+                        <label for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" id="other" name="gender" value="other" {{o}}>
+                        <label for="other">Other</label>
+                    </td>
+                </tr>
+            </div>
+            <tr>
+                <td>
+                   {{userdetails.city}}
+                </td>
+                <td>
+                    <select style="width:100%;" name="city">
+                        <option>Indore</option>
+                        <option>Ujjain</option>
+                        <option>Bhopal</option>
+                        <option>jabalpur</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="mb-3" >
+                <td>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </td>
+            </tr>
+        </div>
+    </table>
+</form>
+</div>
+</center>
+
+{% endblock  %}

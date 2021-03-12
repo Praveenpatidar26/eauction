@@ -1,0 +1,71 @@
+{% extends 'adminhome.html' %}
+{% block admin %}
+
+<script>
+    
+function searchbox(search) {
+    p=document.getElementById("hello").value;
+    tr=document.getElementById("some");
+    td=tr.getElementsByTagName("td").value;
+    console.log("hello" );
+    console.log(p);
+    console.log(td);
+}
+
+
+</script>
+
+
+
+
+<form method="GET" action=""></form>
+<div class="input-group rounded">
+    <input type="search" class="form-control rounded" onKeyUp="searchbox()" id="hello" name="search" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" />
+    
+</div>
+</form>
+
+<h1> Manage Users</h1>
+<p>Admin:{{Email_track}}</p>
+{% endblock admin %}
+{% block content %}
+<center>
+<table border="2" cellspacing="5" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Password</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>Date&Time</th>
+        <th>Status</th>
+        <th>Role</th>
+    </tr>
+{% for row in userDetails %}
+    <tr id="some">
+        <td>{{row.regid}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.username}}</td>
+        <td>{{row.password}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.gender}}</td>
+        <td>{{row.city}}</td>
+        <td>{{row.dt}}</td>
+        <td>{% if row.status %}
+            <a href="/myadmin/manageuserstatus/?s=block&regid={{row.regid}}" style="color:green;">Activate</a>
+            {% else %}
+            <a href="/myadmin/manageuserstatus/?s=verify&regid={{row.regid}}" style="color: brown;">Deactivate</a>
+            {% endif %}
+        </td>
+        <td>
+            <a href="/myadmin/manageuserstatus/?s=DELETE&regid={{row.regid}}" style="color: red;">DELETE</a>
+        </td>
+    </tr>
+    
+{% endfor %}
+</table>
+</center>
+{% endblock content %}

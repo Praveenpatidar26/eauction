@@ -1,0 +1,113 @@
+{% extends 'userhome.html' %}
+
+{% block admin %}
+            <h1>Add your Product for <br><strong>Bidding</strong><br>in Bid Process</h1>
+                        <a href="#features" class="main-button-slider">View your Product</a>
+                            <p style="margin:20px;">User : {{User_track}}</p>
+                            <h1>Click below to Make Payment</h1>
+                            <a href="/user/verifyproduct/" class="main-button-slider">Make Payment</a>
+{% endblock admin %}
+
+
+{% block content %}
+<script>
+function addsubcategory(cat_nam){                        // cat_nam is parameter in function for name of categoryon change.
+   var xhttp=new XMLHttpRequest()
+   xhttp.open("GET","/user/addsubcategory/?cat_nam="+cat_nam,true)
+   xhttp.send()
+
+   xhttp.onreadystatechange=function(){
+       if(xhttp.readyState==4 && xhttp.status==200)
+       {
+           document.getElementById("response").innerHTML=xhttp.responseText
+       }
+
+   }
+}
+</script>
+<style>
+   
+    #form {
+        background-color: rgb(165, 160, 140);
+        width: 800px;
+        height: 970px;
+        align-content: center;
+        border-radius: 20px;
+        margin: 20px;
+        float: inline-end;
+    }
+
+    td {
+        margin: 30px;
+        padding: 30px;
+    }
+
+    #head {
+        padding-top: 20px;
+    }
+    
+</style>
+<center>
+    <div id="form">
+    <form method="POST" enctype="multipart/form-data" action="/user/addproducts/">
+        {% csrf_token %}
+            <h2 id="head">Add Product to SELL</h2>
+            <table>
+                <tr>
+                    <td>Enter Title </td>
+                    <td><input type="text" name="title_name"></td>
+                </tr>
+                <tr>
+                    <td>Select Category</td>
+                    <td><select type="text" onchange="addsubcategory(this.value)" name="category_name">
+                            <option>Select Category</option>
+                            {% for i in category_list %}
+                            <option>{{i.Category_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Sub-Category</td>
+                    <td><select type="text" name="subcategory_name" id="response">
+                            <option>Select Sub-Category</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter Base Price </td>
+                    <td><input type="integer" name="base_price"></td>
+                </tr>
+                <tr>
+                    <td>Enter Description </td>
+                    <td><input type="textarea" name="description_area"></td>
+                </tr>
+                <tr>
+                    <td>Add File </td>
+                    <td><input type="file" name="pic_1"></td>
+                </tr>
+                <tr>
+                    <td>Add File </td>
+                    <td><input type="file" name="pic_2"></td>
+                </tr>
+                <tr>
+                    <td>Add File </td>
+                    <td><input type="file" name="pic_3"></td>
+                </tr>
+                <tr>
+                    <td>Add File </td>
+                    <td><input type="file" name="pic_4"></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td><input type="submit" name="s" value="Upload"></td>
+                </tr>
+
+            </table>
+
+        </div>
+    </form>
+</center>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'master.html' %}
+{% load static %}
+
+
+ {% block mh %}
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="#" class="logo">
+                            <img src="{%static 'images/aboutlogo.png'%}" alt="eAuction" style="width:50px;height:40px;"/>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="/user/" class="active">Home</a></li>
+                            <li><a href="/user/lookproducts/">Look Products</a></li>
+                            <li><a href="/user/addproducts/">Add Products</a></li>
+                            <li><a href="/user/edituserprofile/">Edit Profile</a></li>
+                            <li><a href="/user/changepassword/">Change Password</a></li>
+                             <li><a href="/">Log Out</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+   
+    {% endblock mh %}
+    <!-- ***** Header Area End ***** -->
+{% block admin %}
+            <h1>We provide the best <strong>e-Items</strong><br>which you would not discover anywhere</h1>
+                        <a href="#features" class="main-button-slider">Buy Something</a>
+                            <p>User : {{User_track}}</p>
+{% endblock admin %}

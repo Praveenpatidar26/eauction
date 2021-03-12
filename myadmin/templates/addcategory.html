@@ -1,0 +1,63 @@
+{% extends 'adminhome.html' %}
+
+
+
+
+
+
+
+
+{% block admin %}
+<h1> Add Category & Products </h1>
+<p>Admin:{{Email_track}}</p>
+
+
+
+{% endblock admin %}
+
+{% block content %}
+<style>
+    #form{
+        font-size: medium;
+        background-color: rgb(134, 127, 127);
+        width: 700px;
+        height: 240px;
+        margin: 30px;
+        border-radius: 30px;
+        padding: 10px;
+    }
+</style>
+<center>
+<div id="form">
+<h2> Add Category</h2>
+    <font color="green">{{ msg }}</font>
+<form method="POST" action="/myadmin/addcategory/" enctype="multipart/form-data">
+    {% csrf_token %}
+<table cellspacing="5" cellpadding="5">
+    <tr><td>
+        <label>Add Name of Category : </label>
+    </td>
+    <td>
+        <input type="text" name="category_name" placeholder="Add category name">
+    </td>
+    </tr>
+
+    <tr><td>
+        <label>Add File :</label>
+    </td>
+    <td>
+        <input type="file" name="file_name">
+    </td>
+    </tr>
+    <tr>
+        <td>
+        <input type="submit" name="s" value="Submit">
+    </td>
+    </tr>
+
+</table>
+</form>
+</div>
+</center>
+
+{% endblock content %} 

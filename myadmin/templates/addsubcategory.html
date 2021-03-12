@@ -1,0 +1,71 @@
+{% extends 'adminhome.html' %}
+
+
+{% block admin %}
+<h1> Add Sub - Category</h1>
+<p>Admin:{{Email_track}}</p>
+{% endblock admin %}
+
+{% block content %}
+<style>
+    #form{
+        font-size: medium;
+        background-color: rgb(134, 127, 127);
+        width: 800px;
+        height: 300px;
+        margin: 30px;
+        border-radius: 30px;
+        padding: 10px;
+    }
+</style>
+<center>
+<div id="form">
+    <h3> Add Product </h3>
+    <font color="green">{{ msg }}</font>
+    <form method="POST" action="/myadmin/addsubcategory/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table cellspacing="5" cellpadding="5">
+            <tr>
+                <td>
+                    <label>Add Name of Category : </label>
+                </td>
+                <td>
+                {% comment %} {{category_list}} {% endcomment %}
+                    <select style="width:70%;" name="category_name">
+                    <option>Select Category</option>
+                    {% for row in category_list %}
+                
+                    <option>{{ row.Category_name }}</option>
+
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label>Add Name of Sub Category : </label>
+                </td>
+                <td>
+                    <input type="text" name="subcategory_name" placeholder="Add subcategory name">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Add File :</label>
+                </td>
+                <td>
+                    <input type="file" name="caticon">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" name="s" value="Submit">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</center>
+{% endblock content %}

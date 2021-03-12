@@ -1,0 +1,143 @@
+{% extends 'master.html' %}
+{% load static %}
+{% comment %} {% block content %} {% endcomment %}
+
+ {% block background_image %}
+ <style>
+    #content{
+        font-size: medium;
+        background-color:  rgb(68, 131, 173);
+        width: 500px;
+        height: 450px;
+        margin: 30px;
+        border-radius: 30px;
+        padding: 20px;
+    }
+</style>
+
+    {% block mh %}
+    {{Email_track}}
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="#" class="logo">
+                            <img src="{%static 'images/aboutlogo.png'%}" alt="eAuction" style="width:50px;height:40px;"/>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="/" class="active">Home</a></li>
+                            <li><a href="/about/">About</a></li>
+                            <li><a href="/service/">Services</a></li>
+                            <li><a href="/register/">Register</a></li>
+                            <li><a href="/contact/">Contact Us</a></li>
+                             <li><a href="/login/">Login</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+   
+    {% endblock mh %}
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" id="welcome">
+
+        <!-- ***** Header Text Start ***** -->
+       {{Email_track}}
+<center>
+    <div id="content"> 
+        <h2>Register</h2>
+        {{ msg }}
+         <form method="POST" action="/register/">
+        {% csrf_token %}
+        <table>
+            <div id="form" class="mb-3">
+                <tr>
+                    <td> <label> Name </label></td>
+                    <td> <input type="text" name="name" placeholder="Enter name"> </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="name" name="email" placeholder="enter Email"> </td>
+                </tr>
+                <tr>
+                    <td>Password </td>
+                    <td><input type="password" name="password" placeholder="enter password"> </td>
+                </tr>
+                <tr>
+                    <td> <label>Enter Phone No </label> </td>
+                    <td> <input type="tel" name="mobile" placeholder="mob no"> </td>
+                </tr>
+                <div id="male_female">
+                    <tr>
+                        <td>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Male</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other">Other</label>
+                        </td>
+                    </tr>
+                </div>
+                <tr>
+                    <td>
+                        Select City
+                    </td>
+                    <td>
+                        <select style="width:100%;" name="city">
+                            <option>Indore</option>
+                            <option>Ujjain</option>
+                            <option>Bhopal</option>
+                            <option>jabalpur</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="mb-3" style="margin=5px">
+                    <td>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </td>
+                </tr>
+            </div>
+        </table>
+        </form>
+    </div>
+</center>
+{% comment %} {% endblock %} {% endcomment %}
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <!-- ***** Welcome Area End ***** -->
+
+   {% endblock background_image %}
+ 
+

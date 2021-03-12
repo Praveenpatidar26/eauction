@@ -1,0 +1,41 @@
+{% extends 'userhome.html' %}
+
+{% block content %}
+ <style>
+    #show_img{
+            margin: 30px;
+            width: 700px;
+            height: 500px;
+            background-color: cornflowerblue;
+    }
+    #show_product{
+        margin: 15px;
+        width: 200px;
+        height: 150px;
+        float: left;
+        color:black;
+        font-size: 20px;
+
+    }
+    </style>
+
+<center>
+    <div id="show_img">
+    <div>
+        {% for row in clist %}
+        <a href="/user/looksubproducts/?catname={{row.Category_name}}" >
+        <div id="show_product">
+        <img src="{{ media_url }}{{row.Category_file}}" style="width:170px;height:120px;top-margin:8px;">
+            {{ row.Category_name }}
+            
+        </div>
+        </a>
+        {% endfor %}
+
+
+    </div>
+        
+        
+    </div>
+</center>
+{% endblock content %}

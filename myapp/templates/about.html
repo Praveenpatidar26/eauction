@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+{% load static %}
+{% block header %}
+<section class="section padding-top-70 padding-bottom-0" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                <!-- <img src="{%static 'images/left-image.png' %}" class="rounded img-fluid d-block mx-auto" alt="App"> -->
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-top-fix">
+                <div class="left-heading">
+                    <h2 class="section-title">Let’s discuss about some Items</h2>
+                </div>
+                <div class="left-text">
+                    <p>An online auction (or also electronic auction or e-auction or eAuction) is an auction which is held over the internet.
+                        Like auctions in general, online auctions come in a variety of types like ascending English auctions, 
+                        descending Dutch auctions, first-price sealed-bid, Vickrey auctions and others, which are sometimes not mutually exclusive</p>
+                        {{Email_track}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hr"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
